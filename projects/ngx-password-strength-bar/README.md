@@ -1,18 +1,18 @@
-# ngx-password-strength-bar
+# @solidexpert/ngx-password-strength-bar
 
-[//]: # ([![Build Status]&#40;https://travis-ci.org/yutamago/ngx-password-strength-bar.svg?branch=master&#41;]&#40;https://travis-ci.org/yutamago/ngx-password-strength-bar&#41;)
-[//]: # ([![npm version]&#40;https://badge.fury.io/js/ngx-password-strength-bar.svg&#41;]&#40;https://badge.fury.io/js/ngx-password-strength-bar&#41;)
+Maintained by [solidexpert-ltd](https://github.com/solidexpert-ltd).
+Originally [yutamago/ngx-password-strength-bar](https://github.com/yutamago/ngx-password-strength-bar).
 
-This an Angular 16+ implementation of [ng2-password-strength-bar](https://www.npmjs.com/package/ng2-password-strength-bar).
+This an Angular implementation of [ng2-password-strength-bar](https://www.npmjs.com/package/ng2-password-strength-bar).
 
 [//]: # ([Try it live!]&#40;https://plnkr.co/edit/z0x5gG?p=preview&#41;)
 
 ## Install in your project
 
-`npm install ngx-password-strength-bar --save`
+`npm install @solidexpert/ngx-password-strength-bar --save`
 
 ## Run the example application locally
-- `git clone https://github.com/yutamago/ngx-password-strength-bar.git`
+- `git clone https://github.com/solidexpert-ltd/ngx-password-strength-bar.git`
 - `cd ngx-password-strength-bar`
 - `npm install`
 - `npm run build ngx-password-strength-bar`
@@ -25,7 +25,7 @@ This an Angular 16+ implementation of [ng2-password-strength-bar](https://www.np
 ## Using the Component
 ### Add Component to Module imports
 ```ts
-import { NgxPasswordStrengthBarModule } from 'ngx-password-strength-bar';
+import { NgxPasswordStrengthBarModule } from '@solidexpert/ngx-password-strength-bar';
 //...
 @NgModule({
  //...

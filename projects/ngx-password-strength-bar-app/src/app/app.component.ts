@@ -1,12 +1,12 @@
-import {Component} from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {NgxPasswordStrengthBarComponent} from 'ngx-password-strength-bar';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html',
-  standalone: true,
-  imports: [NgxPasswordStrengthBarComponent, FormsModule],
+    selector: 'app-root',
+    templateUrl: 'app.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [NgxPasswordStrengthBarComponent, FormsModule]
 })
 export class AppComponent {
   public account = {

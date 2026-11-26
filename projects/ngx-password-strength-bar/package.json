@@ -1,20 +1,20 @@
 {
-  "name": "ngx-password-strength-bar",
-  "version": "16.0.0",
-  "description": "Angular 16+ Password Strength Bar",
+  "name": "@solidexpert/ngx-password-strength-bar",
+  "version": "22.0.0",
+  "description": "Angular password strength bar. Maintained by solidexpert-ltd. Originally https://github.com/yutamago/ngx-password-strength-bar.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yutamago/ngx-password-strength-bar.git"
+    "url": "git+https://github.com/solidexpert-ltd/ngx-password-strength-bar.git"
   },
   "author": "Yutamago",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yutamago/ngx-password-strength-bar/issues"
+    "url": "https://github.com/solidexpert-ltd/ngx-password-strength-bar/issues"
   },
-  "homepage": "https://github.com/yutamago/ngx-password-strength-bar#readme",
+  "homepage": "https://github.com/solidexpert-ltd/ngx-password-strength-bar#readme",
   "peerDependencies": {
-    "@angular/common": "^16.0.0",
-    "@angular/core": "^16.0.0"
+    "@angular/common": "^22.0.0",
+    "@angular/core": "^22.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"

@@ -1,10 +1,11 @@
-import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ChangeDetectionStrategy} from '@angular/core';
 
 @Component({
   selector: 'ngx-password-strength-bar',
   templateUrl: 'ngx-password-strength-bar.component.html',
   styleUrls: ['ngx-password-strength-bar.component.scss'],
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   host: {
     'attr.data-password-strength-instance': String(NgxPasswordStrengthBarComponent.INSTANCE_NUMBER++),
   },

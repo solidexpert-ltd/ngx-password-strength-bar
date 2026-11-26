@@ -1,0 +1,73 @@
+name: Publish to npm
+
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+
+      - run: npm ci
+
+      - name: Set publish version
+        env:
+          GITHUB_RUN_NUMBER: ${{ github.run_number }}
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+
+          const root = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+          const raw =
+            (root.devDependencies && root.devDependencies['@angular/core']) ||
+            (root.dependencies && root.dependencies['@angular/core']) ||
+            (root.peerDependencies && root.peerDependencies['@angular/core']);
+
+          if (!raw) {
+            throw new Error('missing @angular/core');
+          }
+
+          const runNumber = process.env.GITHUB_RUN_NUMBER;
+          if (!runNumber) {
+            throw new Error('GITHUB_RUN_NUMBER is not defined.');
+          }
+
+          const major = String(raw).replace(/^[^0-9]*/, '').split('.')[0];
+          const version = `${major}.0.${runNumber}`;
+          const files = [
+            'package.json',
+            'projects/ngx-password-strength-bar/package.json',
+          ];
+
+          for (const file of files) {
+            const pkg = JSON.parse(fs.readFileSync(file, 'utf8'));
+            pkg.version = version;
+            fs.writeFileSync(file, JSON.stringify(pkg, null, 2) + '\n');
+          }
+
+          console.log(`Publish version: ${version}`);
+          NODE
+
+      - run: npm run build
+
+      - name: Publish to npm
+        working-directory: dist/ngx-password-strength-bar
+        run: |
+          if [ -n "${NPM_CONFIG_USERCONFIG:-}" ] && [ -f "$NPM_CONFIG_USERCONFIG" ]; then
+            sed -i '/_authToken/d' "$NPM_CONFIG_USERCONFIG"
+          fi
+          unset NODE_AUTH_TOKEN
+          npm publish --access public --tag latest
